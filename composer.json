@@ -1,0 +1,30 @@
+{
+    "name": "jelly/support",
+    "description": "The jelly Support package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "jelly",
+            "email": "42282367@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "ext-openssl": "*",
+        "ext-mcrypt": "*",
+        "ext-mbstring": "*",
+        "psr/log": "~1.0"
+    },
+    "autoload": {
+        "classmap": [
+
+        ],
+        "files": [
+            "src/Support/Helpers.php"
+        ],
+        "psr-4": {
+            "JellySupport\\": "src/Support/"
+        }
+    }
+}
