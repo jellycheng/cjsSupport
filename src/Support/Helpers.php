@@ -1,5 +1,5 @@
 <?php
-namespace JellySupport;
+namespace CjsSupport;
 /**
  * 助手函数
  */

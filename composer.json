@@ -24,7 +24,7 @@
             "src/Support/Helpers.php"
         ],
         "psr-4": {
-            "JellySupport\\": "src/Support/"
+            "CjsSupport\\": "src/Support/"
         }
     }
 }
