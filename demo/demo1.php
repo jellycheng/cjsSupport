@@ -2,3 +2,16 @@
 /**
  *
  */
+require __DIR__ . '/../vendor/autoload.php';
+
+echo \CjsSupport\Util\SmsTpl::getSmsContent(\CjsSupport\Util\SmsCode::LOGIN_BUY, ['sms_code'=>'8989']);
+echo PHP_EOL;
+
+
+echo \CjsSupport\Util\SmsTpl::getSmsContent(\CjsSupport\Util\SmsCode::COMMON_TEST,
+                                            ['sms_code'=>'8989',
+                                                'username'=>'账号A',
+                                                'nickname'=>'昵称j'
+                                            ]);
+echo PHP_EOL;
+
