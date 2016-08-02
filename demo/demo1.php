@@ -15,3 +15,9 @@ echo \CjsSupport\Util\SmsTpl::getSmsContent(\CjsSupport\Util\SmsCode::COMMON_TES
                                             ]);
 echo PHP_EOL;
 
+echo \CjsSupport\Util\SmsTpl::getSmsContent(9,
+                                            ['sms_code'=>'6565',
+                                                'username'=>'账号A',
+                                                'nickname'=>'昵称j'
+                                            ]);
+echo PHP_EOL;
