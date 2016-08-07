@@ -1,9 +1,9 @@
 <?php
 namespace CjsSupport\Util;
 /**
- * 系统类型
+ * 操作系统类型
  */
-class SystemType {
+class OsSystemType {
 
     const ANDROID_OS = '1'; //andorid 操作系统, app, ipad
 
