@@ -5,6 +5,16 @@ namespace CjsSupport;
 class ResponseFormat {
 
 
+    public static function getFormat() {
+        $format = array(
+            'code'=>0,
+            'msg'=>'',
+            'data'=>''
+        );
+        return $format;
+
+    }
+
     /**
      * @param int $code
      * @param string $msg
