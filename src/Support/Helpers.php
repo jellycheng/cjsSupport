@@ -131,3 +131,13 @@ function array_get($array, $key, $default = null)
 
     return $array;
 }
+
+//是否在微信内
+function is_weixin($str='')
+{ 
+	$str = $str?:$_SERVER['HTTP_USER_AGENT'];
+    if ( strpos($str, 'MicroMessenger') !== false ) {
+        return true;
+    }  
+    return false;
+}
