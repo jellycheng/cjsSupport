@@ -141,3 +141,12 @@ function is_weixin($str='')
     }  
     return false;
 }
+//是否windows系统
+function isWin() {
+    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
