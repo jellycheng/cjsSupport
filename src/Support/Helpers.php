@@ -1,11 +1,16 @@
 <?php
 namespace CjsSupport;
 /**
- * 助手函数
+ * 本文件是助手函数
  */
 
-function randStr($length = 16){
-    // 密码字符集，可任意添加你需要的字符
+/**
+ * 获取随机数
+ * @param int $length
+ * @return string
+ */
+function randStr($length = 16)
+{
     $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     $str = "";
     for($i = 0; $i < $length; $i++)
@@ -19,7 +24,8 @@ function randStr($length = 16){
  * 判断是否SSL协议
  * @return boolean
  */
-function is_ssl() {
+function isSsl()
+{
     if(isset($_SERVER['HTTPS']) && ('1' == $_SERVER['HTTPS'] || 'on' == strtolower($_SERVER['HTTPS']))){
         return true;
     }elseif(isset($_SERVER['SERVER_PORT']) && ('443' == $_SERVER['SERVER_PORT'] )) {
@@ -40,7 +46,8 @@ function is_ssl() {
  * @param string $encoding 数据编码
  * @return string
  */
-function xml_encode($data, $root = 'ectouch', $item = 'item', $attr = '', $id = 'id', $encoding = 'utf-8') {
+function xml_encode($data, $root = 'ectouch', $item = 'item', $attr = '', $id = 'id', $encoding = 'utf-8')
+{
     if (is_array($attr)) {
         $_attr = array();
         foreach ($attr as $key => $value) {
@@ -56,6 +63,7 @@ function xml_encode($data, $root = 'ectouch', $item = 'item', $attr = '', $id = 
     $xml .= "</{$root}>";
     return $xml;
 }
+
 /**
  * 数据XML编码
  * @param mixed $data 数据
@@ -63,7 +71,8 @@ function xml_encode($data, $root = 'ectouch', $item = 'item', $attr = '', $id = 
  * @param string $id 数字索引key转换为的属性名
  * @return string
  */
-function data_to_xml($data, $item = 'item', $id = 'id') {
+function data_to_xml($data, $item = 'item', $id = 'id')
+{
     $xml = $attr = '';
     foreach ($data as $key => $val) {
         if (is_numeric($key)) {
@@ -85,7 +94,8 @@ function data_to_xml($data, $item = 'item', $id = 'id') {
  * @param integer $type 转换类型
  * @return string
  */
-function parseName($name, $type=0) {
+function parseName($name, $type=0)
+{
     if ($type) {
         return ucfirst(preg_replace("/_([a-zA-Z])/e", "strtoupper('\\1')", $name));
     } else {
@@ -93,7 +103,8 @@ function parseName($name, $type=0) {
     }
 }
 
-function redirect($url, $time=0, $msg='') {
+function redirect($url, $time=0, $msg='')
+{
     if (empty($msg)) {
         $msg    = "系统将在{$time}秒之后自动跳转到{$url}！";
     }
@@ -132,8 +143,12 @@ function array_get($array, $key, $default = null)
     return $array;
 }
 
-//是否在微信内
-function is_weixin($str='')
+/**
+ * 是否在微信内
+ * @param string $str
+ * @return bool
+ */
+function isWeixin($str='')
 { 
 	$str = $str?:$_SERVER['HTTP_USER_AGENT'];
     if ( strpos($str, 'MicroMessenger') !== false ) {
@@ -141,7 +156,11 @@ function is_weixin($str='')
     }  
     return false;
 }
-//是否windows系统
+
+/**
+ * 是否windows系统
+ * @return bool
+ */
 function isWin() {
     if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
         return true;
@@ -150,3 +169,50 @@ function isWin() {
     }
 }
 
+function isCli() {
+    $sapi_type = php_sapi_name();
+    if (substr($sapi_type, 0, 3) == 'cgi') {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
+/**
+ * 只支持三段式的,每段最多三位
+ * @param $version
+ * @return int
+ */
+function versionToNum($version) {
+    $tmp = explode(".", $version);
+    switch(count($tmp)) {
+        case 1:
+            $number = $tmp[0];
+            break;
+        case 2:
+            $number = $tmp[0]*1000+$tmp[1];
+            break;
+        case 3:
+            $number = $tmp[0]*1000000+$tmp[1]*1000+$tmp[2];
+            break;
+        case 4:
+            $number = 0; //不支持
+            break;
+    }
+
+    return $number;
+}
+
+/**
+ * 匹配三段式版本
+ * @param $version
+ * @return bool
+ */
+function versionUtil($version) {
+    if(preg_match('/^([\d]{1,3})\.([\d]{1,3})\.([\d]{1,3})$/', trim($version), $match)) {
+        return $match;
+    } else {
+        return false;
+    }
+}
