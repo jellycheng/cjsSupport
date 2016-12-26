@@ -2,7 +2,7 @@
 /**
  *
  */
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/common.php';
 
 echo \CjsSupport\Util\SmsTpl::getSmsContent(\CjsSupport\Util\SmsCode::LOGIN_BUY, ['sms_code'=>'8989']);
 echo PHP_EOL;
