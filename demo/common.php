@@ -10,7 +10,7 @@ if(file_exists(dirname(__DIR__) . '/vendor/autoload.php')) {
     require_once dirname(__DIR__)  . '/src/Support/Helpers.php';
     spl_autoload_register(function ($class) {
         $ns = 'CjsSupport';
-        $base_dir = dirname(__DIR__) . '/src';
+        $base_dir = dirname(__DIR__) . '/src/Support';
         $prefix_len = strlen($ns);
         if (substr($class, 0, $prefix_len) !== $ns) {
             return;

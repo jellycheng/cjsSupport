@@ -20,7 +20,7 @@ class SmsTpl
             'intro' => '通用模板1', //模板用途描述
         ],
         SmsCode::REGISTER_BUY => [
-            'tpl' => '您的注册千果,验证码为{sms_code}, 在2分钟内有效.如非本人操作,请忽略本短信.', //短信模板
+            'tpl' => '您的注册验证码为{sms_code}, 在2分钟内有效.如非本人操作,请忽略本短信.', //短信模板
             'intro' => 'app注册买家用户发送验证码', //模板用途描述
         ],
         SmsCode::LOGIN_BUY => [
