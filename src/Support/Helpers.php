@@ -216,3 +216,28 @@ function versionUtil($version) {
         return false;
     }
 }
+
+
+function encode_php_tags($str)
+{
+    return str_replace(array('<?', '?>'), array('&lt;?', '?&gt;'), $str);
+}
+
+function strip_slashes($str)
+{
+    if ( ! is_array($str))
+    {
+        return stripslashes($str);
+    }
+    foreach ($str as $key => $val)
+    {
+        $str[$key] = strip_slashes($val);
+    }
+    return $str;
+}
+
+function strip_quotes($str)
+{
+    return str_replace(array('"', "'"), '', $str);
+}
+
