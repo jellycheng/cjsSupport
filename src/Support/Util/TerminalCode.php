@@ -65,7 +65,7 @@ class TerminalCode
 
     /**
      *
-     * @param null $key = 'A'
+     * @param string $key = 'A'
      * @return array|string
      */
     public static function getNum($key = null)
@@ -86,7 +86,8 @@ class TerminalCode
 
     /**
      * 通过数字获取字母代号
-     * @param $num
+     *
+     * @param int $num
      */
     public static function getCode4Num($num=null) {
         $config = self::$config;
