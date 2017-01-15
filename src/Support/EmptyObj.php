@@ -3,11 +3,18 @@ namespace CjsSupport;
 
 class EmptyObj {
 
-	public function get() {
+	public static function create()
+	{
+		return new static();
+	}
+
+	public function get()
+	{
 		return new \stdClass;
 	}
 
-	public static function g() {
+	public static function g()
+	{
 		return new \stdClass();
 
 	}
