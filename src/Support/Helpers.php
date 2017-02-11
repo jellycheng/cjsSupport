@@ -241,3 +241,31 @@ function strip_quotes($str)
     return str_replace(array('"', "'"), '', $str);
 }
 
+function dd()
+{
+    if (func_num_args() === 0) {
+        return;
+    }
+    $variables = func_get_args();
+    var_dump($variables);
+    die;
+}
+
+function echo_exception(\Exception $e)
+{
+    $code = $e->getCode();
+    $msg = $e->getMessage();
+    $trace = $e->getTraceAsString();
+    echo <<<EOF
+###################################################################################
+          \033[1;31m a exception\033[0m
+          code: $code
+          message: $msg
+
+$trace
+###################################################################################
+EOF;
+}
+
+
+
