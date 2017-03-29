@@ -298,3 +298,25 @@ function matchCase($value, $comparison)
     return $value;
 }
 
+/**
+ * br转换行符
+ *
+ * @param $string
+ * @return mixed
+ */
+function br2nl($string)
+{
+    return preg_replace('/\<br(\s*)?\/?\>/i', PHP_EOL, $string);
+}
+
+/**
+ * 换行符转br
+ *
+ * @param $string
+ * @return string
+ */
+function nl2br($string)
+{
+    return nl2br($string, true);
+}
+
