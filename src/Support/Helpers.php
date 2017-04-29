@@ -320,3 +320,27 @@ function nl2br($string)
     return nl2br($string, true);
 }
 
+/**
+ * Convert a string to snake case.
+ * 把字符串转成蛇形命名,如 fooBar转成 foo_bar
+ * @param  string  $value
+ * @param  string  $delimiter 分隔符,默认_
+ * @return string
+ */
+function str_snake($value, $delimiter = '_')
+{
+    static $snakeCache;
+    $key = $value.$delimiter;
+
+    if (isset($snakeCache[$key]))
+    {
+        return $snakeCache[$key];
+    }
+
+    if ( ! ctype_lower($value))
+    {
+        $value = strtolower(preg_replace('/(.)(?=[A-Z])/', '$1'.$delimiter, $value));
+    }
+
+    return $snakeCache[$key] = $value;
+}
