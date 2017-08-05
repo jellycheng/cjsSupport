@@ -361,6 +361,37 @@ function str_snake($value, $delimiter = '_')
 }
 
 
+function studly($value)
+{
+    static $studlyCache;
+    $key = $value;
+    if (isset($studlyCache[$key])) {
+        return $studlyCache[$key];
+    }
+    $value = ucwords(str_replace(['-', '_'], ' ', $value));
+    return $studlyCache[$key] = str_replace(' ', '', $value);
+}
+
+function startsWith($str, $startStr) {
+    if ($startStr != '' && mb_strpos($str, $startStr) === 0) {
+        return true;
+    }
+    return false;
+}
+
+
+//去掉前缀
+function trimPrefix($str, $prefix, $encode = 'UTF-8') {
+    if(startsWith($str, $prefix)) {
+        $start = mb_strlen($prefix);
+        return mb_substr($str, $start, null, $encode);
+    } else {
+        return $str;
+    }
+
+}
+
+
 //获取用户家目录
 function getUserDir()
 {
