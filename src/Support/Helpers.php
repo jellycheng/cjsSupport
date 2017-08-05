@@ -143,6 +143,21 @@ function array_get($array, $key, $default = null)
     return $array;
 }
 
+function array_has($array, $key)
+{
+    if (empty($array) || is_null($key)) return false;
+    if (array_key_exists($key, $array)) return true;
+    foreach (explode('.', $key) as $segment)
+    {
+        if ( ! is_array($array) || ! array_key_exists($segment, $array))
+        {
+            return false;
+        }
+        $array = $array[$segment];
+    }
+    return true;
+}
+
 /**
  * 是否在微信内
  * @param string $str
@@ -344,3 +359,13 @@ function str_snake($value, $delimiter = '_')
 
     return $snakeCache[$key] = $value;
 }
+
+
+//获取用户家目录
+function getUserDir()
+{
+    $userEnv = defined('PHP_WINDOWS_VERSION_MAJOR') ? 'APPDATA' : 'HOME';
+    $userDir = getenv($userEnv);
+    return rtrim(strtr($userDir, '\\', '/'), '/');
+}
+
