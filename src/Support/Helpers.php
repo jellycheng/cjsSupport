@@ -125,6 +125,24 @@ function redirect($url, $time=0, $msg='')
     }
 }
 
+function array_set(&$array, $key, $value)
+{
+    if (is_null($key)) {
+        return $array = $value;
+    }
+    $keys = explode('.', $key);
+
+    while (count($keys) > 1) {
+        $key = array_shift($keys);
+        if (! isset($array[$key]) || ! is_array($array[$key])) {
+            $array[$key] = [];
+        }
+        $array = &$array[$key];
+    }
+    $array[array_shift($keys)] = $value;
+    return $array;
+}
+
 function array_get($array, $key, $default = null)
 {
     if (is_null($key)) return $array;
