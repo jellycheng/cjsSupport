@@ -118,7 +118,7 @@ class Format
                 $options |= JSON_UNESCAPED_UNICODE;
             }
         }
-        return \json_encode($this->_data);
+        return \json_encode($this->_data, $options);
     }
 
     public function toSerialized()
