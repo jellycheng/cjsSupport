@@ -22,3 +22,8 @@ echo PHP_EOL;
 
 echo \CjsSupport\Util\Format::factory(array('foo' => 'bar', 'hi'=>'cjs', 1=>22,2=>3))->toXML();
 echo PHP_EOL;
+
+
+$isEmail = new \CjsSupport\Util\RegExp('/^\w+@\w+\.\w+$/');
+$b = $isEmail('test@qq.com');
+var_dump($b);
