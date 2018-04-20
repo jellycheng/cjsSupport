@@ -3,7 +3,7 @@ namespace CjsSupport\Enum;
 
 abstract class Enum implements \ArrayAccess
 {
-    protected $enums;
+    protected $enums; //['常量名'=>'对应值', ]
 
     public function __construct()
     {
@@ -18,7 +18,7 @@ abstract class Enum implements \ArrayAccess
     public static function valid($val)
     {
         $self = static::getInstance();
-        return in_array($val, $self);
+        return in_array($val, array_values($self->getEnums()));
     }
 
     public static function toString()
@@ -36,6 +36,22 @@ abstract class Enum implements \ArrayAccess
     public function getEnums()
     {
         return $this->enums;
+    }
+
+    public function allConstantsName() {
+        if($this->enums) {
+            return array_keys($this->enums);
+        } else {
+            return [];
+        }
+    }
+
+    public function allConstantsValue() {
+        if($this->enums) {
+            return array_values($this->enums);
+        } else {
+            return [];
+        }
     }
 
     public function offsetSet($offset, $value)

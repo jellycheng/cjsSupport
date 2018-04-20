@@ -350,7 +350,7 @@ function br2nl($string)
  */
 function nl2br($string)
 {
-    return nl2br($string, true);
+    return \nl2br($string, true);
 }
 
 /**
