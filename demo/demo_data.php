@@ -38,3 +38,11 @@ echo CjsSupport\DataManage\SeoData::getInstance()->get('title') . PHP_EOL;
 var_export(CjsSupport\DataManage\SeoData::getInstance()->getData());
 echo PHP_EOL;
 
+$seoObj = CjsSupport\DataManage\SeoData::getInstance();
+echo "title: " . $seoObj['title'] . PHP_EOL;
+$seoObj['title'] = "new title";
+echo "title: " . $seoObj['title'] . PHP_EOL;
+var_dump(isset($seoObj['title']));
+unset($seoObj['title']);
+echo "title: " . $seoObj['title'] . PHP_EOL;
+var_dump(isset($seoObj['title']));

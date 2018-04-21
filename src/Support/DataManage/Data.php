@@ -1,10 +1,15 @@
 <?php
 namespace CjsSupport\DataManage;
 
+use ArrayAccess;
+
 /**
-* 
-*/
-abstract class Data 
+ * Data
+ *
+ * @author jelly<42282367@qq.com>
+ *
+ */
+abstract class Data implements ArrayAccess
 {
 	protected $data = []; //key=>value 如 0=>'123', 'user'=>'a123', '100'
 
@@ -126,6 +131,26 @@ abstract class Data
 
 	public function getData() {
 		return $this->data;
+	}
+
+	public function offsetExists($offset)
+	{
+		return $this->has($offset);
+	}
+
+	public function offsetGet($offset)
+	{
+		return $this->get($offset);
+	}
+
+	public function offsetSet($offset, $value)
+	{
+		$this->set($offset, $value);
+	}
+
+	public function offsetUnset($offset)
+	{
+		$this->remove($offset);
 	}
 
 
