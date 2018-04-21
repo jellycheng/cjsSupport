@@ -418,3 +418,7 @@ function getUserDir()
     return rtrim(strtr($userDir, '\\', '/'), '/');
 }
 
+
+function getRequestMethod($default = '') {
+    return isset($_SERVER['REQUEST_METHOD'])?strtoupper($_SERVER['REQUEST_METHOD']):$default;
+}
