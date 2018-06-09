@@ -422,3 +422,30 @@ function getUserDir()
 function getRequestMethod($default = '') {
     return isset($_SERVER['REQUEST_METHOD'])?strtoupper($_SERVER['REQUEST_METHOD']):$default;
 }
+
+//获取今天的开始和结束时间戳
+function getTodaySEtime() {
+	$time = time();
+	return getSEtime($time);
+}
+
+//获取指定时间戳那日的开始和结束时间戳
+function getSEtime($time) {
+	$date = date("Y-m-d", $time);
+	$ret = [
+			's_time'=>strtotime($date . " 0:0:0"),
+			'e_time'=>strtotime($date . " 23:59:59")
+	];
+	return $ret;
+}
+
+
+//2个时间戳相差天数：0表同一天，1表隔1天，以此类推
+function diffDay($time1, $time2) {
+	if($time1<$time2) {
+		$tmp = $time1;
+		$time1 = $time2;
+		$time2 = $tmp;
+	}
+	return date('z', $time1) - date('z', $time2);
+}
