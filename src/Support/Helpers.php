@@ -449,3 +449,41 @@ function diffDay($time1, $time2) {
 	}
 	return date('z', $time1) - date('z', $time2);
 }
+
+
+/**
+ * @param $module  如 User\\UserLogin
+ * @param $method  如 login
+ * @param array $param
+ * @param array $ext
+ *  - string id 请求id
+ * @return string
+ */
+function getRequestRpcJson($module, $method = '', $param=[], $ext = []) {
+    $requestId = isset($ext['id'])?$ext['id']:"test_".mt_rand(10000, 99999);
+    if($module && $method) {
+        $tmpMethod = $module . '.' . $method;
+    } else if($module) {
+        $tmpMethod = $module;
+    } else if($method) {
+        $tmpMethod = $method;
+    } else {
+        $tmpMethod = '';
+    }
+    $json = [
+        'jsonrpc'=>'2.0',
+        'method'=>$tmpMethod,
+        'id'=>$requestId,
+    ];
+    if($param){
+        $json['params']=$param;
+    }
+    $options = 0;
+    if (defined('JSON_UNESCAPED_SLASHES')) {
+        $options |= JSON_UNESCAPED_SLASHES;
+    }
+    if (defined('JSON_UNESCAPED_UNICODE')) {
+        $options |= JSON_UNESCAPED_UNICODE;
+    }
+    return json_encode($json, $options);
+}
