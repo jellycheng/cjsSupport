@@ -21,3 +21,11 @@ echo \CjsSupport\Util\SmsTpl::getSmsContent(9,
                                                 'nickname'=>'昵称j'
                                             ]);
 echo PHP_EOL;
+
+
+\CjsSupport\GlobalSingleton::getInstance()->setBasePath(__DIR__ . '/')->setControllerName("App\\Controller\\IndexController")
+    ->setControllerMethod("indexAction");
+\CjsSupport\GlobalSingleton::getInstance()->appendExtData("base_root_path",  dirname(__DIR__));
+echo \CjsSupport\GlobalSingleton::getInstance();
+echo PHP_EOL;
+
