@@ -497,4 +497,23 @@ function filterEmoji($str) {
     return $str;
 }
 
+/**
+ * 把字符串分隔成目录结构
+ * 一般目录可由字母、数字、-、_等组成 + 分隔符 组成正则合法验证
+*/
+function string2Dir($string, $separation='_') {
+	if(!$string || !$separation || !preg_match('/^[a-z0-9\-_\.]+$/i', $string)) {
+		return $string;
+	}
+	
+	$reg = '/' . $separation . '/i';
+	if(preg_match($reg, $string)) {
+		$ret = str_replace($separation, '/', $string);
+	} else {
+		$ret = $string;
+	}
 
+	//$dir = ucfirst(preg_replace_callback('/(_|-|\.)([a-zA-Z])/', function($match){return '/'.strtoupper($match[2]);}, $string));
+	//echo $dir. PHP_EOL;// Abc/Hello/A123-45
+	return $ret;
+}
