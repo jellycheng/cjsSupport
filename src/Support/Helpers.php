@@ -89,6 +89,7 @@ function data_to_xml($data, $item = 'item', $id = 'id')
 
 /**
  * 字符串命名风格转换
+ * /e参数，在php5.6开始报警告错误，php7完全废弃/e参数，使用preg_replace_callback函数替换
  * type 0 将Java风格转换为C的风格 1 将C风格转换为Java的风格
  * @param string $name 字符串
  * @param integer $type 转换类型
@@ -101,6 +102,52 @@ function parseName($name, $type=0)
     } else {
         return strtolower(trim(preg_replace("/[A-Z]/", "_\\0", $name), "_"));
     }
+}
+//兼容php5.6和php7写法
+function parseName2($name, $type=0) {
+    if(!$name) {
+        return $name;
+    }
+    switch($type) {
+        case 0:
+            return ucfirst(preg_replace_callback("/_([a-zA-Z])/",
+                    function($v) {
+                        return strtoupper($v[1]);
+                    },
+                    $name)
+            );
+            break;
+        case 1:
+            return preg_replace_callback("/_([a-zA-Z])/",
+                function($v) {
+                    return strtoupper($v[1]);
+                },
+                $name);
+            break;
+        case 2:
+            return ucfirst(preg_replace_callback("/_([a-zA-Z0-9])/",
+                    function($v) {
+                        return strtoupper($v[1]);
+                    },
+                    $name)
+            );
+            break;
+        case 3:
+            return preg_replace_callback("/_([a-zA-Z0-9])/",
+                function($v) {
+                    return strtoupper($v[1]);
+                },
+                $name);
+            break;
+        case 4:
+            //大写字母转下划线
+            return strtolower(trim(preg_replace("/[A-Z]/", "_\\0", $name), "_"));
+            break;
+        default:
+            return $name;
+            break;
+    }
+
 }
 
 function redirect($url, $time=0, $msg='')
