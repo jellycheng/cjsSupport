@@ -22,4 +22,10 @@ class Oauth
         return $header;
     }
 
+    public static function getAuthorizationBearerFormat($token) {
+        $str = "Authorization: Bearer " . $token;
+        return $str;
+    }
+
+
 }
