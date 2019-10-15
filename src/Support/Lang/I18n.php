@@ -3,7 +3,6 @@ namespace CjsSupport\Lang;
 
 class I18n{
 
-    protected static $instance;
     protected $lang   = []; //语言配置
     protected $langType = 'en';//语言代号
     protected $lang_dir = __DIR__ . '/i18n/';
@@ -15,10 +14,11 @@ class I18n{
     }
 
     public static function getInstance() {
-        if(!self::$instance) {
-            self::$instance = new static();
+        static $instance = null;
+        if(!$instance) {
+            $instance = new static();
         }
-        return self::$instance;
+        return $instance;
     }
 
     public function setLang($langType = '') {

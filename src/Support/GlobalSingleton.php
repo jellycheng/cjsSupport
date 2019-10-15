@@ -1,8 +1,7 @@
 <?php
 namespace CjsSupport;
 
-
-class GlobalSingleton
+final class GlobalSingleton
 {
     protected static $instance = null;
 
