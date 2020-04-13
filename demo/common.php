@@ -7,10 +7,10 @@ date_default_timezone_set('Asia/Shanghai');
 if(file_exists(dirname(__DIR__) . '/vendor/autoload.php')) {
     require  dirname(__DIR__) . '/vendor/autoload.php';
 } else {
-    require_once dirname(__DIR__)  . '/src/Support/Helpers.php';
+    require_once dirname(__DIR__)  . '/src/Helpers.php';
     spl_autoload_register(function ($class) {
         $ns = 'CjsSupport';
-        $base_dir = dirname(__DIR__) . '/src/Support';
+        $base_dir = dirname(__DIR__) . '/src';
         $prefix_len = strlen($ns);
         if (substr($class, 0, $prefix_len) !== $ns) {
             return;
