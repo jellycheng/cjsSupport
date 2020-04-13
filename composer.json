@@ -20,10 +20,10 @@
 
         ],
         "files": [
-            "src/Support/Helpers.php"
+            "src/Helpers.php"
         ],
         "psr-4": {
-            "CjsSupport\\": "src/Support/"
+            "CjsSupport\\": "src/"
         }
     }
 }
