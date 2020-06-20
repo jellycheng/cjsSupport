@@ -564,3 +564,17 @@ function string2Dir($string, $separation='_') {
 	//echo $dir. PHP_EOL;// Abc/Hello/A123-45
 	return $ret;
 }
+
+//$param = \CjsSupport\splitUrlPath("abc/xyz/hello/world/user/123");
+function splitUrlPath($url) {
+    $params = [];
+    if ($url) {
+        // /(\w+)\/([^\/]+)/'
+        preg_replace_callback('/([a-zA-Z0-9_\-\.]+)\/([^\/]+)/', function ($match) use (&$params) {
+            $params[strtolower($match[1])] = $match[2];
+        }, $url);
+    }
+    return $params;
+}
+
+

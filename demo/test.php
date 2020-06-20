@@ -32,3 +32,7 @@ echo PHP_EOL;
 
 var_export(\CjsSupport\Util\Header::getAllHeaders());
 echo PHP_EOL;
+
+
+var_export(\CjsSupport\splitUrlPath("abc/xyz/hello/world/user/123/a.x/b'/x-y/223"));
+
