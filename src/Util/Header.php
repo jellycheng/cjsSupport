@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jelly
- * Date: 2019/9/6
- * Time: 22:57
- */
-
 namespace CjsSupport\Util;
 
 

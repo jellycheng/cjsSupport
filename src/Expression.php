@@ -1,5 +1,6 @@
 <?php
 namespace CjsSupport;
+
 /**
  * 表达式
  */

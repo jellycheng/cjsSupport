@@ -1,8 +1,5 @@
 <?php
 namespace CjsSupport;
-/**
- * 本文件是助手函数
- */
 
 /**
  * 获取随机数

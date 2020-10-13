@@ -31,7 +31,7 @@ class Color
     /**
      * @param array $colors
      */
-    public static function setColors($key, $val)
+    public static function setColors($key, $val = '')
     {
         if(is_array($key)) {
             self::$colors = array_merge(self::$colors, $key);

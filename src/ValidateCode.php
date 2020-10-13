@@ -1,8 +1,9 @@
 <?php
 namespace CjsSupport;
-//验证码类
-class ValidateCode
-{
+
+//图片验证码类
+class ValidateCode {
+
     private $charset = 'abcdefghkmnprstuvwxyzABCDEFGHKMNPRSTUVWXYZ23456789';//随机因子
     private $code;//验证码
     private $codelen = 4;//验证码长度

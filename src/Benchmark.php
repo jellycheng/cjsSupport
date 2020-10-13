@@ -11,7 +11,7 @@ class Benchmark {
     protected static $endPrefix = 'end_';
 
     /**
-     * \App\Helper\Benchmark::start('getuserinfo');
+     * \CjsSupport\Benchmark::start('getuserinfo');
      * @param $tag
      */
     public static function start($tag) {
@@ -20,7 +20,7 @@ class Benchmark {
     }
 
     /**
-     * \App\Helper\Benchmark::elapsed_time('getuserinfo');
+     * \CjsSupport\Benchmark::elapsed_time('getuserinfo');
      * @param $tag
      * @param int $decimals
      * @return string

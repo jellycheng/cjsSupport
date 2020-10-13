@@ -1,12 +1,8 @@
 <?php
 namespace CjsSupport;
-/**
- * Created by PhpStorm.
- * User: jelly
- * Date: 16/9/10
- * Time: 下午8:15
- */
+
 use ArrayAccess;
+
 class Cookie implements ArrayAccess {
 
     /**
