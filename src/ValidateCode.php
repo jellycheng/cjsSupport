@@ -4,15 +4,15 @@ namespace CjsSupport;
 //图片验证码类
 class ValidateCode {
 
-    private $charset = 'abcdefghkmnprstuvwxyzABCDEFGHKMNPRSTUVWXYZ23456789';//随机因子
-    private $code;//验证码
-    private $codelen = 4;//验证码长度
-    private $width = 130;//宽度
-    private $height = 50;//高度
-    private $img;//图形资源句柄
-    private $font;//指定的字体
-    private $fontsize = 20;//指定字体大小
-    private $fontcolor;//指定字体颜色
+    protected $charset = 'abcdefghkmnprstuvwxyzABCDEFGHKMNPRSTUVWXYZ23456789';//随机因子
+    protected $code;//验证码
+    protected $codelen = 4;//验证码长度
+    protected $width = 130;//宽度
+    protected $height = 50;//高度
+    protected $img;//图形资源句柄
+    protected $font;//指定的字体
+    protected $fontsize = 20;//指定字体大小
+    protected $fontcolor;//指定字体颜色
 
     //构造方法初始化
     public function __construct($width = 130, $hight = 30, $fontsize = 20, $codelen = 4)
@@ -89,5 +89,28 @@ class ValidateCode {
     {
         return strtolower($this->code);
     }
+
+    public function getCharset()
+    {
+        return $this->charset;
+    }
+
+    public function setCharset($charset)
+    {
+        $this->charset = $charset;
+        return $this;
+    }
+
+    public function getFont()
+    {
+        return $this->font;
+    }
+
+    public function setFont($font)
+    {
+        $this->font = $font;
+        return $this;
+    }
+
 }
 
