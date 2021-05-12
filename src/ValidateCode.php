@@ -24,10 +24,21 @@ class ValidateCode {
         $this->font = dirname(__FILE__) . '/font/elephant.ttf';//注意字体路径要写对，否则显示不了图片
     }
 
+    // 外部传入图片验证码
+    public function setCode($code)
+    {
+        if(empty($code)) {
+            return $this;
+        }
+        $this->codelen = mb_strlen($code);
+        $this->code = $code;
+        return $this;
+    }
+
     //生成随机码
     private function createCode()
     {
-        $_len = strlen($this->charset) - 1;
+        $_len = mb_strlen($this->charset) - 1;
         for ($i = 0; $i < $this->codelen; $i++) {
             $this->code .= $this->charset[mt_rand(0, $_len)];
         }
@@ -78,7 +89,9 @@ class ValidateCode {
     public function doimg()
     {
         $this->createBg();
-        $this->createCode();
+        if(empty($this->code)){
+           $this->createCode(); 
+        }
         $this->createLine();
         $this->createFont();
         $this->outPut();
