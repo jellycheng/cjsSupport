@@ -25,8 +25,8 @@ echo $agentObj->findServiceAddress("mobile-api-dev") . PHP_EOL;
 echo $agentObj->findServiceAddress("go-cart-service-dev") . PHP_EOL;
 
 
-// 注册服务
-$serviceInfo = ['name'=>'user-service',
+// 注册服务：服务名-环境代号
+$serviceInfo = ['name'=>'user-service-dev',
                 "address"=>'http://user.chengjinsheng.dev.tgs.com',
                 "tags"=>["用户服务"],
                 "check"=>[
@@ -42,6 +42,6 @@ var_export($res2);
 echo PHP_EOL;
 
 // 注销服务
-//$res3 = $agentObj->deregisterService("user-service");
+//$res3 = $agentObj->deregisterService("user-service-dev");
 //var_export($res3);
 //echo PHP_EOL;
