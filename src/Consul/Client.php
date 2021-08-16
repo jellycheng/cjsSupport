@@ -60,7 +60,6 @@ class Client
         switch ($method) {
             case 'PUT':
                 $_putData = is_array($params) ? http_build_query($params) : $params;
-                echo $_putData . PHP_EOL;
                 curl_setopt($this->_ch, CURLOPT_CUSTOMREQUEST, 'PUT');
                 curl_setopt($this->_ch, CURLOPT_POSTFIELDS, $_putData);
                 break;
