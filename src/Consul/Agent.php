@@ -19,33 +19,39 @@ class Agent extends RegisterConterBase
     }
 
     // 注册服务，发起put请求
-    public function registerService($serviceInfo = [], $options = []) {
+    public function registerService($serviceInfo = [], $options = [], $extGetParam = []) {
         $options['params'] = \CjsSupport\json_encode($serviceInfo);
         if(empty($options['headers'])) {
             $options['headers'] = ['Content-Type: application/json'];
         }
         $url = $this->getRegisterCenterHost() . '/v1/agent/service/register';
         $token = $this->getConsulToken();
-        if($token) {
-            $url .= "?token=" . $token;
+        if($token && !isset($extGetParam['token'])) {
+            $extGetParam['token'] = $token;
             // X-Consul-Token
+        }
+        if(!empty($extGetParam)) {
+            $url .= "?" . http_build_query($extGetParam);
         }
         return $this->client->put($url, $options);
     }
 
     // 注销服务
-    public function deregisterService($serviceId)
+    public function deregisterService($serviceId, $extGetParam = [])
     {
         $token = $this->getConsulToken();
         $url = $this->getRegisterCenterHost() . '/v1/agent/service/deregister/'.$serviceId;
-        if($token) {
-            $url .= "?token=" . $token;
+        if($token && !isset($extGetParam['token'])) {
+            $extGetParam['token'] = $token;
+        }
+        if(!empty($extGetParam)) {
+            $url .= "?" . http_build_query($extGetParam);
         }
         return $this->client->put($url);
     }
 
     // 发现服务，获取服务信息
-    public function findService($serviceId) {
+    public function findService($serviceId, $extGetParam = []) {
         static $cacheData = [];
         $token = $this->getConsulToken();
         $key = md5($serviceId . $token);
@@ -53,8 +59,11 @@ class Agent extends RegisterConterBase
             return $cacheData[$key];
         }
         $url = $this->getRegisterCenterHost() . '/v1/agent/service/' . $serviceId;
-        if($token) {
-            $url .= "?token=" . $token;
+        if($token && !isset($extGetParam['token'])) {
+            $extGetParam['token'] = $token;
+        }
+        if(!empty($extGetParam)) {
+            $url .= "?" . http_build_query($extGetParam);
         }
         $res = $this->client->get($url);
         if(empty($res['code'])){
@@ -62,10 +71,11 @@ class Agent extends RegisterConterBase
         }
         return $res;
     }
+
     // 仅获取服务地址
-    public function findServiceAddress($serviceId) {
+    public function findServiceAddress($serviceId, $extGetParam = []) {
         $address = "";
-        $res = $this->findService($serviceId);
+        $res = $this->findService($serviceId, $extGetParam);
         if(empty($res["code"])) {
             $tmpData = json_decode($res["data"], true);
             $address = trim($tmpData['Address'], "/");
