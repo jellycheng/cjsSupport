@@ -27,5 +27,16 @@ class Oauth
         return $str;
     }
 
+    // 提取 Authorization请求头Bearer后的内容
+    public static function extractBearerCon($authHeader, $prefix="bearer") {
+        if(!$prefix) {
+            $prefix = "bearer";
+        }
+        if ($authHeader && preg_match('/'.$prefix.'\s*(\S+)/i', $authHeader, $matches)) {
+            return $matches[1];
+        }
+        return "";
+
+    }
 
 }
