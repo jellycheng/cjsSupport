@@ -575,3 +575,18 @@ function splitUrlPath($url) {
 }
 
 
+function getVerifyVal($str) {
+    $ret = "";
+    if($str) {
+        $str = trim($str);
+    } else {
+        return $ret;
+    }
+    $verifyPattern = "/^(WW|MP)_verify_([0-9a-zA-Z]{16}).txt$/i";
+    if(preg_match($verifyPattern, $str, $m)) {
+        if(isset($m[2])) {
+            return $m[2];
+        }
+    }
+    return $ret;
+}
