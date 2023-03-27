@@ -39,5 +39,8 @@ echo \CjsSupport\Bc\Bcmath::getInstance()->calc(0.1, 0.7, 'mul', 2) . PHP_EOL;//
 
 //echo \CjsSupport\Bc\Bcmath::getInstance()->calc(0.1, 0.7, 'xxx', 2) . PHP_EOL;//抛异常了
 
+echo \CjsSupport\fen2yuan(-101) . PHP_EOL;
+echo \CjsSupport\fen2yuan(200) . PHP_EOL;
+
 
 echo "finish" . PHP_EOL;

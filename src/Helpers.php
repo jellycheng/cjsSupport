@@ -590,3 +590,13 @@ function getVerifyVal($str) {
     }
     return $ret;
 }
+
+// 分转元
+function fen2yuan($price, $default = '0.00'){
+    if(empty($price)){
+        return $default;
+    }
+    $res = bcdiv($price, 100, 2);
+    return strval($res);
+}
+
