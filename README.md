@@ -1,6 +1,7 @@
-# jellySupport
+# cjsSupport
 ```
-The jelly Support package
+常用php函数、类库、算法等封装
+
 ```
 
 ## composer配置
