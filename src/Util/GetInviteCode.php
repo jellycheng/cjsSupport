@@ -13,7 +13,7 @@ class GetInviteCode {
     protected $key;
     protected $num;
     public function __construct() {
-        $this->key = 'abcdefghjkmnpqrstwxy345678'; // 注意这个key里面不能出现数字9  否则当 求模=0 会重复的
+        $this->key = 'abcdefghkmnpqrstwxy345678'; // 注意这个key里面不能出现数字9  否则当 求模=0 会重复的
         $this->num = mb_strlen($this->key);
     }
 
